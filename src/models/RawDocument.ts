@@ -1,7 +1,7 @@
 
 import mongoose from 'mongoose';
 
-const DocumentSchema = new mongoose.Schema({
+const RawDocumentSchema = new mongoose.Schema({
 
     user:{
         type: mongoose.Schema.Types.ObjectId,
@@ -20,11 +20,19 @@ const DocumentSchema = new mongoose.Schema({
     s3Key:{
         type: String,
 
+    },
+    processedDocument :{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'ProcessedData',
+    },
+    documentUrl:{
+        type: String,
     }
+
 
 },
 {timestamps: true}
 )
 
 
-export default mongoose.model('Document', DocumentSchema);
+export default mongoose.model('Document', RawDocumentSchema);
